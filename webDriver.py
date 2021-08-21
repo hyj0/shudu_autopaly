@@ -11,7 +11,7 @@ class WebDriver:
 
     def setup(self):
         self.driver.get(self.url)
-        self.driver.maximize_window()
+        # self.driver.maximize_window()
         self.page = self.driver.page_source
 
     def quit(self):

@@ -5,6 +5,7 @@
 
 import copy
 import time
+import webDriver
 
 shuduList = [
 [0, 0, 0, 0, 0, 0, 1, 0, 0] ,
@@ -170,6 +171,9 @@ def Resolve():
     return False, None
 
 if __name__ == '__main__':
+    wd = webDriver.WebDriver_puzzle_sudoku("https://cn.puzzle-sudoku.com/")
+    wd.setup()
+    shuduList = wd.getNumArray()
     LoadInput()
     start = time.time()
     ret, sList = Resolve()
@@ -177,6 +181,12 @@ if __name__ == '__main__':
         print("ok")
     else:
         print("false")
+    # time.sleep(5)
+    for x, y, num in sList:
+        # time.sleep(1)
+        wd.putNum(x, y, num)
+    wd.finish()
 
     end = time.time()
     print("time", end-start)
+    time.sleep(1000000)
